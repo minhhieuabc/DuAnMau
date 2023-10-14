@@ -7,8 +7,13 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
 
 import com.example.pnlib.R;
+import com.example.pnlib.dao.ThuThuDao;
+import com.example.pnlib.model.ThuThu;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -56,11 +61,87 @@ public class frgThemNguoi extends Fragment {
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
     }
-
+    ThuThuDao thuThuDao;
+    EditText edTenDangNhap, edHoVaTen, edMatKhauND, edNhapLaiMKND;
+    Button btnThemND, btnHuyND;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_frg_them_nguoi, container, false);
+        View view = inflater.inflate(R.layout.fragment_frg_them_nguoi, container, false);
+        thuThuDao = new ThuThuDao(getContext());
+        edTenDangNhap = view.findViewById(R.id.edTenDangNhap);
+        edHoVaTen = view.findViewById(R.id.edHoVaTen);
+        edMatKhauND = view.findViewById(R.id.edMatKhauND);
+        edNhapLaiMKND = view.findViewById(R.id.edNhapLaiMKND);
+        btnHuyND = view.findViewById(R.id.btnHuyND);
+        btnThemND = view.findViewById(R.id.btnThemND);
+
+        btnHuyND.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                edTenDangNhap.setText("");
+                edHoVaTen.setText("");
+                edMatKhauND.setText("");
+                edNhapLaiMKND.setText("");
+            }
+        });
+
+        btnThemND.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String tenDN = edTenDangNhap.getText().toString();
+                String hoTen = edHoVaTen.getText().toString();
+                String matKhau = edMatKhauND.getText().toString();
+                String nhapLai = edNhapLaiMKND.getText().toString();
+
+                if (validate(tenDN,hoTen,matKhau,nhapLai) > 0) {
+                    ThuThuDao thuThuDao = new ThuThuDao(getContext());
+                    if (thuThuDao.insert(new ThuThu(tenDN,hoTen,matKhau)) > 0) {
+                        Toast.makeText(getContext(), "Thêm thành công !", Toast.LENGTH_SHORT).show();
+                        edTenDangNhap.setText("");
+                        edHoVaTen.setText("");
+                        edMatKhauND.setText("");
+                        edNhapLaiMKND.setText("");
+                    } else {
+                        Toast.makeText(getContext(), "Thêm thất bại !", Toast.LENGTH_SHORT).show();
+                    }
+                }
+            }
+        });
+        return view;
+    }
+
+    public int validate(String tenDN,String hoTen,String matKhau,String nhapLai) {
+        int check = 1;
+        if (tenDN.length() != 0 && hoTen.length() != 0 && matKhau.length() != 0 && nhapLai.length() != 0) {
+            if (!matKhau.equals(nhapLai)) {
+                Toast.makeText(getContext(), "Nhập lại mật khẩu chưa chính xác !", Toast.LENGTH_SHORT).show();
+                edNhapLaiMKND.setError("Nhập lại mật khẩu chưa chính xác !");
+                edNhapLaiMKND.requestFocus();
+                check = -1;
+            } else {
+                check = 1;
+            }
+        } else {
+            if (tenDN.length() == 0) {
+                edTenDangNhap.setError("Không được để trống trường này !");
+                edTenDangNhap.requestFocus();
+            }
+            if (hoTen.length() == 0) {
+                edHoVaTen.setError("Không được để trống trường này !");
+                edHoVaTen.requestFocus();
+            }
+            if (matKhau.length() == 0) {
+                edMatKhauND.setError("Không được để trống trường này !");
+                edMatKhauND.requestFocus();
+            }
+            if (nhapLai.length() == 0) {
+                edNhapLaiMKND.setError("Không được để trống trường này !");
+                edNhapLaiMKND.requestFocus();
+            }
+            check = -1;
+        }
+        return check;
     }
 }
