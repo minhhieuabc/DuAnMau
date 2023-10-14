@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:layout_margin="20dp">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center">
+        <EditText
+            android:id="@+id/edMaSach"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:background="@drawable/bg_edit"
+            android:layout_marginTop="20dp"
+            android:hint="Mã sách"
+            android:paddingStart="10dp"
+            android:inputType="none"
+            android:focusable="false"
+            android:cursorVisible="false"/>
+        <EditText
+            android:id="@+id/edTenSach"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:background="@drawable/bg_edit"
+            android:layout_marginTop="20dp"
+            android:hint="Tên sách"
+            android:paddingStart="10dp"/>
+        <EditText
+            android:id="@+id/edGiaThue"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:background="@drawable/bg_edit"
+            android:layout_marginTop="20dp"
+            android:hint="giá thuê"
+            android:paddingStart="10dp"/>
+        <Spinner
+            android:id="@+id/spLoaiSach"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="20dp"
+            />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="30dp"
+            android:gravity="center_horizontal">
+            <Button
+                android:id="@+id/btnLuuSach"
+                android:layout_width="140dp"
+                android:layout_height="60dp"
+                android:background="@drawable/bg_chk"
+                android:text="Lưu"
+                android:textColor="@color/white"
+                android:textSize="27dp"/>
+            <Button
+                android:id="@+id/btnHuyTSach"
+                android:layout_width="140dp"
+                android:layout_height="60dp"
+                android:background="@drawable/btn_huy"
+                android:text="Hủy"
+                android:textColor="@color/white"
+                android:textSize="27dp"
+                android:layout_marginLeft="20dp"/>
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

@@ -28,7 +28,7 @@
                 <item android:id="@+id/addPerson"
                     android:title="Thêm người dùng"
                     android:icon="@drawable/adduser"/>
-                <item android:id="@+id/Key"
+                <item android:id="@+id/key"
                     android:title="Đổi mật khẩu"
                     android:icon="@drawable/key"/>
                 <item android:id="@+id/logOut"

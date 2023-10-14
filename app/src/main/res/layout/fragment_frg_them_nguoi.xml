@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragment.frgThemNguoi">
+
+    <!-- TODO: Update blank fragment layout -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="730dp"
+        android:background="#F2F3F4">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_margin="30dp">
+            <ImageView
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:src="@drawable/boy"
+                android:layout_gravity="center_horizontal"
+
+                android:layout_marginBottom="40dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tên đăng nhập"
+                android:textSize="25sp"
+                android:textColor="@color/black"/>
+            <EditText
+                android:id="@+id/edTenDangNhap"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:background="@drawable/edit_mk"
+                android:layout_marginTop="10dp"
+                android:inputType="textPassword"
+                android:padding="10dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Họ và tên"
+                android:textSize="25sp"
+                android:textColor="@color/black"
+                android:layout_marginTop="20dp"/>
+            <EditText
+                android:id="@+id/edHoVaTen"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:background="@drawable/edit_mk"
+                android:layout_marginTop="10dp"
+                android:inputType="textPassword"
+                android:padding="10dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Mật khẩu"
+                android:textSize="25sp"
+                android:textColor="@color/black"
+                android:layout_marginTop="20dp"/>
+            <EditText
+                android:id="@+id/edMatKhauND"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:background="@drawable/edit_mk"
+                android:layout_marginTop="10dp"
+                android:inputType="textPassword"
+                android:padding="10dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Nhập lại mật khẩu"
+                android:textSize="25sp"
+                android:textColor="@color/black"
+                android:layout_marginTop="20dp"/>
+            <EditText
+                android:id="@+id/edNhapLaiMKND"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:background="@drawable/edit_mk"
+                android:layout_marginTop="10dp"
+                android:inputType="textPassword"
+                android:padding="10dp"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="50dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:gravity="center_horizontal">
+                <Button
+                    android:id="@+id/btnThemND"
+                    android:layout_width="120dp"
+                    android:layout_height="70dp"
+                    android:text="Thêm"
+                    android:background="@drawable/bg_chk"
+                    android:textColor="@color/white"
+                    android:textSize="25dp"/>
+                <Button
+                    android:id="@+id/btnHuyND"
+                    android:layout_width="120dp"
+                    android:layout_height="70dp"
+                    android:text="Hủy"
+                    android:background="@drawable/btn_huy"
+                    android:textColor="@color/white"
+                    android:textSize="25dp"
+                    android:layout_marginLeft="50dp"/>
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+</FrameLayout>

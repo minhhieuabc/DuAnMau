@@ -27,20 +27,20 @@ public class PhieuMuonDao {
     }
     public long insert(PhieuMuon obj){
         ContentValues values = new ContentValues();
-        values.put("maTV", obj.getMaTT());
-        values.put("maTT", obj.getMaTV());
-        values.put("maSach", sdf.format(obj.getNgay()));
-        values.put("ngayThue", obj.getMaTV());
+        values.put("maTV", obj.getMaTV());
+        values.put("maTT", obj.getMaTT());
+        values.put("maSach",obj.getMaSach());
+        values.put("ngayThue",  sdf.format(obj.getNgay()));
         values.put("tienThue", obj.getTienThue());
         values.put("traSach", obj.getTraSach());
         return db.insert("PhieuMuon", null, values);
     }
     public int update(PhieuMuon obj){
         ContentValues values = new ContentValues();
-        values.put("maTV", obj.getMaTT());
-        values.put("maTT", obj.getMaTV());
-        values.put("maSach", sdf.format(obj.getNgay()));
-        values.put("ngayThue", obj.getMaTV());
+        values.put("maTV", obj.getMaTV());
+        values.put("maTT", obj.getMaTT());
+        values.put("maSach",obj.getMaSach());
+        values.put("ngayThue",  sdf.format(obj.getNgay()));
         values.put("tienThue", obj.getTienThue());
         values.put("traSach", obj.getTraSach());
         return db.update("PhieuMuon", values, "maPM=?", new String[]{String.valueOf(obj.getMaPM())});

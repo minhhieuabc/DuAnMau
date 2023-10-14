@@ -33,7 +33,9 @@
             android:textSize="23sp"
             android:background="@drawable/bg_edit"
             android:paddingLeft="10dp"
-            android:textColorHint="@color/black" />
+            android:textColorHint="@color/black"
+            android:drawableRight="@drawable/smile"
+            android:paddingEnd="15dp"/>
         <EditText
             android:id="@+id/edMatKhau"
             android:layout_gravity="center_horizontal"
@@ -46,7 +48,9 @@
             android:paddingLeft="10dp"
             android:layout_marginTop="20dp"
             android:layout_marginBottom="20dp"
-            android:textColorHint="@color/black"/>
+            android:textColorHint="@color/black"
+            android:drawableRight="@drawable/mat"
+            android:paddingEnd="15dp"/>
         <CheckBox
             android:id="@+id/chkLuu"
             android:layout_width="wrap_content"

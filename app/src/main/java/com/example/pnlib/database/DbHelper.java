@@ -10,7 +10,7 @@ public class DbHelper extends SQLiteOpenHelper {
     public static final String Db_name = "QLTV";
 
     public DbHelper(Context context) {
-        super(context, Db_name, null, 8);
+        super(context, Db_name, null, 11);
     }
 
     @Override
@@ -31,21 +31,21 @@ public class DbHelper extends SQLiteOpenHelper {
                 "hoTen TEXT NOT NULL, " +
                 "namSinh TEXT NOT NULL)";
         db.execSQL(Table_ThanhVien);
-        String Insert_ThanhVien = "INSERT INTO ThanhVien(hoTen, namSinh) VALUES " +
-                "('Nguyễn Anh Văn', '2004')," +
-                "('Hoàng Quang Vinh', '2002')," +
-                "('Nguyễn Tiến Mạnh', '2005')";
-        db.execSQL(Insert_ThanhVien);
+//        String Insert_ThanhVien = "INSERT INTO ThanhVien(hoTen, namSinh) VALUES " +
+//                "('Nguyễn Anh Văn', '2004')," +
+//                "('Hoàng Quang Vinh', '2002')," +
+//                "('Nguyễn Tiến Mạnh', '2005')";
+//        db.execSQL(Insert_ThanhVien);
 
         // Tạo bảng loại sách
         String Table_LoaiSach = "CREATE TABLE LoaiSach(" +
                 "maLS INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 "tenLoai TEXT NOT NULL)";
         db.execSQL(Table_LoaiSach);
-        String Insert_LoaiSach = "INSERT INTO LoaiSach(tenLoai) VALUES('Ngữ pháp tiếng anh')," +
-                "('Lập trình')," +
-                "('Làm đẹp')";
-        db.execSQL(Insert_LoaiSach);
+//        String Insert_LoaiSach = "INSERT INTO LoaiSach(tenLoai) VALUES('Ngữ pháp tiếng anh')," +
+//                "('Lập trình')," +
+//                "('Làm đẹp')";
+//        db.execSQL(Insert_LoaiSach);
 
         // Tao bang sach
         String Table_Sach = "CREATE TABLE Sach(" +
@@ -54,10 +54,10 @@ public class DbHelper extends SQLiteOpenHelper {
                 "giaThue INTEGER NOT NULL, " +
                 "maLoai INTEGER REFERENCES LoaiSach(maLoai))";
         db.execSQL(Table_Sach);
-        String Insert_Sach = "INSERT INTO Sach(tenSach, giaThue, maLoai) VALUES('Lập trình web', 2000, 1)," +
-                "('Luyện siêu trí nhớ từ vựng', 4000, 3)," +
-                "('Sắc đẹp tuổi teen', 1000, 2)";
-        db.execSQL(Insert_Sach);
+//        String Insert_Sach = "INSERT INTO Sach(tenSach, giaThue, maLoai) VALUES('Lập trình web', 2000, 1)," +
+//                "('Luyện siêu trí nhớ từ vựng', 4000, 3)," +
+//                "('Sắc đẹp tuổi teen', 1000, 2)";
+//        db.execSQL(Insert_Sach);
 
         // Tao bang phieu muon
         String Table_PhieuMuon = "CREATE TABLE PhieuMuon(" +
@@ -69,10 +69,11 @@ public class DbHelper extends SQLiteOpenHelper {
                 "tienThue INTEGER NOT NULL," +
                 "traSach INTEGER NOT NULL)";
         db.execSQL(Table_PhieuMuon);
-        String Insert_PhieuMuon = "INSERT INTO PhieuMuon(maTV, maTT, maSach, ngayThue, tienThue, traSach) VALUES ('1', 'admin', '1', '2023-06-24', 2000, 0)," +
-                "('2', 'admin', '3', '2023-02-12', 1000, 1)," +
-                "('3', 'abc', '2', '2021-07-20', 4000, 0)";
-        db.execSQL(Insert_PhieuMuon);
+//        String Insert_PhieuMuon = "INSERT INTO PhieuMuon(maTV, maTT, maSach, ngayThue, tienThue, traSach) VALUES " +
+//                "('1', 'admin', '1', '2023-06-24', 2000, 0)," +
+//                "('2', 'admin', '3', '2023-02-12', 1000, 1)," +
+//                "('3', 'abc', '2', '2021-07-20', 4000, 0)";
+//        db.execSQL(Insert_PhieuMuon);
     }
 
     @Override
