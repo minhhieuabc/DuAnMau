@@ -10,6 +10,8 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -32,6 +34,7 @@ import com.example.pnlib.model.ThanhVien;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 /**
@@ -84,12 +87,14 @@ public class frgSach extends Fragment {
     ListView lvSach;
     FloatingActionButton fltAdd;
     List<Sach> list;
+    List<Sach> listPhu;
     SachDao sachDao;
     Sach sach;
     SachAdapter sachAdapter;
     Dialog dialog;
     Spinner spinner;
-    EditText edMaSach, edTenSach, edGiaThue;
+    EditText edMaSach, edTenSach, edNamXB , edGiaThue, edSearch;
+    Button btnTang, btnGiam;
     LoaiSachSpinerAdapter sachSpinerAdapter;
     ArrayList<LoaiSach> listLS;
     LoaiSachDao loaiSachDao;
@@ -102,8 +107,54 @@ public class frgSach extends Fragment {
         View view = inflater.inflate(R.layout.fragment_frg_sach, container, false);
         lvSach = view.findViewById(R.id.lvSach);
         fltAdd = view.findViewById(R.id.fltAdd);
+        btnTang = view.findViewById(R.id.btnTang);
+        btnGiam = view.findViewById(R.id.btnGiam);
         sachDao = new SachDao(getContext());
+        edSearch =  view.findViewById(R.id.edSearch);
+        listPhu = sachDao.getAll();
         capNhatLV();
+        btnTang.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                sapXepTang(list);
+                lvSach.setAdapter(sachAdapter);
+                sachAdapter.notifyDataSetChanged();
+            }
+        });
+        btnGiam.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                sapXepGiam(list);
+                lvSach.setAdapter(sachAdapter);
+                sachAdapter.notifyDataSetChanged();
+            }
+        });
+
+        edSearch.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                list.clear();
+                String searchText = s.toString().toLowerCase();
+                for (Sach sach: listPhu) {
+                    String tenSach = sach.getTenSach().toLowerCase();
+                    if (tenSach.contains(searchText)) {
+                        list.add(sach);
+                    }
+                }
+                lvSach.setAdapter(sachAdapter);
+                sachAdapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
         fltAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -125,6 +176,12 @@ public class frgSach extends Fragment {
         list = (List<Sach>) sachDao.getAll();
         sachAdapter = new SachAdapter(getActivity(), this, list);
         lvSach.setAdapter(sachAdapter);
+    }
+    public void sapXepTang(List<Sach> ds){
+        ds.sort(Comparator.comparing(Sach::getGiaThue));
+    }
+    public void sapXepGiam(List<Sach> ds){
+        ds.sort(Comparator.comparing(Sach::getGiaThue).reversed());
     }
 
     public void xoa(final String Id){
@@ -160,6 +217,7 @@ public class frgSach extends Fragment {
         dialog.setContentView(R.layout.dialog_sach);
         edMaSach = dialog.findViewById(R.id.edMaSach);
         edTenSach = dialog.findViewById(R.id.edTenSach);
+        edNamXB = dialog.findViewById(R.id.edNamXB);
         edGiaThue = dialog.findViewById(R.id.edGiaThue);
         spinner = dialog.findViewById(R.id.spLoaiSach);
         Button btnLuuS = dialog.findViewById(R.id.btnLuuSach);
@@ -188,6 +246,7 @@ public class frgSach extends Fragment {
         if (type != 0){
             edMaSach.setText(String.valueOf(sach.getMaSach()));
             edTenSach.setText(sach.getTenSach());
+            edNamXB.setText(String.valueOf(sach.getNamXB()));
             edGiaThue.setText(String.valueOf(sach.getGiaThue()));
             for (int i = 0; i < listLS.size(); i++)
                 if (sach.getMaLoai() == (listLS.get(i).getMaLoai())){
@@ -207,6 +266,7 @@ public class frgSach extends Fragment {
             public void onClick(View v) {
                 sach = new Sach();
                 sach.setTenSach(edTenSach.getText().toString());
+                sach.setNamXB(Integer.parseInt(edNamXB.getText().toString()));
                 sach.setGiaThue(Integer.parseInt(edGiaThue.getText().toString()));
                 sach.setMaLoai(maLoaiSach);
                 if (validate() > 0){
@@ -233,7 +293,7 @@ public class frgSach extends Fragment {
     }
     public int validate(){
         int check = 1;
-        if (edTenSach.getText().length() == 0 || edGiaThue.getText().length() == 0){
+        if (edTenSach.getText().length() == 0 || edGiaThue.getText().length() == 0 || edNamXB.getText().length() == 0){
             Toast.makeText(getContext(), "Bạn phải nhập đầy đủ", Toast.LENGTH_SHORT).show();
             check = -1;
         }

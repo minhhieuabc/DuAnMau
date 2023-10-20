@@ -27,6 +27,7 @@
             <menu>
                 <item android:id="@+id/addPerson"
                     android:title="Thêm người dùng"
+                    android:visible="false"
                     android:icon="@drawable/adduser"/>
                 <item android:id="@+id/key"
                     android:title="Đổi mật khẩu"

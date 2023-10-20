@@ -61,6 +61,9 @@ public class MainActivity extends AppCompatActivity {
         frgPhieuMuon frgPhieuMuon = new frgPhieuMuon();
         replaceFrg(frgPhieuMuon);
         getSupportActionBar().setTitle("Quản lý phiếu mượn");
+        if(user.equalsIgnoreCase("admin")){
+            nav.getMenu().findItem(R.id.addPerson).setVisible(true);
+        }
 
         nav.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
 

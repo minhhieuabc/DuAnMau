@@ -30,7 +30,7 @@ public class SachAdapter extends ArrayAdapter<Sach> {
     frgSach frgSach;
     private ArrayList<Sach> list;
 
-    TextView txtMaSach, txtTenSach, txtLSsach, txtGiaThue;
+    TextView txtMaSach, txtTenSach, txtnamXB , txtLSsach, txtGiaThue;
     ImageButton imgBtnDelete;
 
 
@@ -58,6 +58,8 @@ public class SachAdapter extends ArrayAdapter<Sach> {
             txtMaSach.setText("Mã sách: " + item.getMaSach());
             txtTenSach = v.findViewById(R.id.txtTenSach);
             txtTenSach.setText("Tên sách: " + item.getTenSach());
+            txtnamXB = v.findViewById(R.id.txtNamXB);
+            txtnamXB.setText("Năm xuất bản: " + item.getNamXB());
             txtGiaThue = v.findViewById(R.id.txtGiaThue);
             txtGiaThue.setText("Giá thuê: " + item.getGiaThue());
             txtLSsach = v.findViewById(R.id.txtLSsach);

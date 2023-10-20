@@ -37,6 +37,14 @@
             android:layout_marginTop="20dp"
             android:hint="Năm sinh"
             android:paddingStart="10dp"/>
+        <EditText
+            android:id="@+id/dialog_CCCD"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:background="@drawable/bg_edit"
+            android:layout_marginTop="20dp"
+            android:hint="CCCD"
+            android:paddingStart="10dp"/>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

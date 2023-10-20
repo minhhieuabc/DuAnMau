@@ -10,7 +10,7 @@ public class DbHelper extends SQLiteOpenHelper {
     public static final String Db_name = "QLTV";
 
     public DbHelper(Context context) {
-        super(context, Db_name, null, 11);
+        super(context, Db_name, null, 12);
     }
 
     @Override
@@ -29,7 +29,8 @@ public class DbHelper extends SQLiteOpenHelper {
         String Table_ThanhVien = "CREATE TABLE ThanhVien(" +
                 "maTV INTEGER PRIMARY KEY AUTOINCREMENT," +
                 "hoTen TEXT NOT NULL, " +
-                "namSinh TEXT NOT NULL)";
+                "namSinh TEXT NOT NULL," +
+                "cccd TEXT NOT NULL)";
         db.execSQL(Table_ThanhVien);
 //        String Insert_ThanhVien = "INSERT INTO ThanhVien(hoTen, namSinh) VALUES " +
 //                "('Nguyễn Anh Văn', '2004')," +
@@ -51,6 +52,7 @@ public class DbHelper extends SQLiteOpenHelper {
         String Table_Sach = "CREATE TABLE Sach(" +
                 "maSach INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 "tenSach TEXT NOT NULL, " +
+                "namXB INTEGER NOT NULL, " +
                 "giaThue INTEGER NOT NULL, " +
                 "maLoai INTEGER REFERENCES LoaiSach(maLoai))";
         db.execSQL(Table_Sach);

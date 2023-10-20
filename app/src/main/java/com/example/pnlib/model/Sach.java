@@ -3,17 +3,27 @@ package com.example.pnlib.model;
 public class Sach {
     private int maSach;
     private String tenSach;
+    private int namXB;
     private int giaThue;
     private int maLoai;
 
     public Sach() {
     }
 
-    public Sach(int maSach, String tenSach, int giaThue, int maLoai) {
+    public Sach(int maSach, String tenSach, int namXB, int giaThue, int maLoai) {
         this.maSach = maSach;
         this.tenSach = tenSach;
+        this.namXB = namXB;
         this.giaThue = giaThue;
         this.maLoai = maLoai;
+    }
+
+    public int getNamXB() {
+        return namXB;
+    }
+
+    public void setNamXB(int namXB) {
+        this.namXB = namXB;
     }
 
     public int getMaSach() {

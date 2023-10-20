@@ -23,12 +23,14 @@ public class ThanhVienDao {
         ContentValues values = new ContentValues();
         values.put("hoTen", obj.getHoTenTV());
         values.put("namSinh", obj.getNamSinh());
+        values.put("cccd", obj.getCccd());
         return db.insert("ThanhVien", null, values);
     }
     public int update(ThanhVien obj){
         ContentValues values = new ContentValues();
         values.put("hoTen", obj.getHoTenTV());
         values.put("namSinh", obj.getNamSinh());
+        values.put("cccd", obj.getCccd());
         return db.update("ThanhVien", values, "maTV=?", new String[]{String.valueOf(obj.getMaTV())});
     }
     public int delete(String id){
@@ -44,6 +46,7 @@ public class ThanhVienDao {
             obj.setMaTV(Integer.parseInt(c.getString(c.getColumnIndex("maTV"))));
             obj.setHoTenTV(c.getString(c.getColumnIndex("hoTen")));
             obj.setNamSinh(c.getString(c.getColumnIndex("namSinh")));
+            obj.setCccd(c.getString(c.getColumnIndex("cccd")));
             list.add(obj);
         }
         return list;

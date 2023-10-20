@@ -85,7 +85,7 @@ public class frgThanhVien extends Fragment {
     ThanhVienAdapter thanhVienAdapter;
     ThanhVien thanhVien;
     Dialog dialog;
-    EditText dialog_TenTV, dialog_NamSinh, dialog_MaTV;
+    EditText dialog_TenTV, dialog_NamSinh, dialog_MaTV, dialog_cccd;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -153,12 +153,14 @@ public class frgThanhVien extends Fragment {
         dialog_MaTV = dialog.findViewById(R.id.dialog_MaTV);
         dialog_TenTV = dialog.findViewById(R.id.dialog_TenTV);
         dialog_NamSinh = dialog.findViewById(R.id.dialog_NamSinh);
+        dialog_cccd = dialog.findViewById(R.id.dialog_CCCD);
         Button btnThem = dialog.findViewById(R.id.btnLuu);
         Button btnHuyT = dialog.findViewById(R.id.btnHuyT);
         if (type != 0){
             dialog_MaTV.setText(String.valueOf(thanhVien.getMaTV()));
             dialog_TenTV.setText(thanhVien.getHoTenTV());
             dialog_NamSinh.setText(thanhVien.getNamSinh());
+            dialog_cccd.setText(thanhVien.getCccd());
         }
         btnHuyT.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -172,6 +174,7 @@ public class frgThanhVien extends Fragment {
                 thanhVien = new ThanhVien();
                 thanhVien.setHoTenTV(dialog_TenTV.getText().toString());
                 thanhVien.setNamSinh(dialog_NamSinh.getText().toString());
+                thanhVien.setCccd(dialog_cccd.getText().toString());
                 if (validate() > 0){
                     if (type == 0){
                         if (thanhVienDao.insert(thanhVien) > 0){
@@ -196,7 +199,7 @@ public class frgThanhVien extends Fragment {
     }
     public int validate(){
         int check = 1;
-        if (dialog_TenTV.getText().length() == 0 || dialog_NamSinh.getText().length() == 0){
+        if (dialog_TenTV.getText().length() == 0 || dialog_NamSinh.getText().length() == 0 || dialog_cccd.getText().length() == 0){
             Toast.makeText(getContext(), "Bạn phải nhập đầy đủ", Toast.LENGTH_SHORT).show();
             check = -1;
         }

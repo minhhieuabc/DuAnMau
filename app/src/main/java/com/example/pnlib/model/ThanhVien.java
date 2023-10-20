@@ -5,18 +5,29 @@ public class ThanhVien {
     private String hoTenTV;
     private String namSinh;
 
+    private String cccd;
+
     public ThanhVien() {
     }
 
-    public ThanhVien(int maTV, String hoTenTV, String namSinh) {
+    public ThanhVien(int maTV, String hoTenTV, String namSinh, String cccd) {
         this.maTV = maTV;
         this.hoTenTV = hoTenTV;
         this.namSinh = namSinh;
+        this.cccd = cccd;
     }
 
     public ThanhVien(String hoTenTV, String namSinh) {
         this.hoTenTV = hoTenTV;
         this.namSinh = namSinh;
+    }
+
+    public String getCccd() {
+        return cccd;
+    }
+
+    public void setCccd(String cccd) {
+        this.cccd = cccd;
     }
 
     public int getMaTV() {

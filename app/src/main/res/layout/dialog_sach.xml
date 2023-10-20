@@ -30,6 +30,14 @@
             android:hint="Tên sách"
             android:paddingStart="10dp"/>
         <EditText
+            android:id="@+id/edNamXB"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:background="@drawable/bg_edit"
+            android:layout_marginTop="20dp"
+            android:hint="Năm xuất bản"
+            android:paddingStart="10dp"/>
+        <EditText
             android:id="@+id/edGiaThue"
             android:layout_width="300dp"
             android:layout_height="50dp"

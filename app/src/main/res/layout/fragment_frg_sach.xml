@@ -1,27 +1,74 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".fragment.frgLoaiSach">
 
+    <EditText
+        android:id="@+id/edSearch"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/ed_search"
+        android:drawableLeft="@drawable/search"
+        android:hint="Tìm kiếm..."
+        android:paddingStart="10dp"
+        android:paddingLeft="5dp" />
+    <LinearLayout
+        android:id="@+id/sapXep"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_horizontal"
+        android:layout_below="@+id/edSearch">
+        <Button
+            android:id="@+id/btnTang"
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:text="Tăng"
+            android:background="@drawable/bg_chk"
+            android:textColor="@color/white"
+            android:textSize="20dp" />
+        <Button
+            android:id="@+id/btnGiam"
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:text="Giảm"
+            android:background="@drawable/btn_huy"
+            android:textColor="@color/white"
+            android:textSize="20dp"
+            android:layout_marginLeft="30dp"/>
+    </LinearLayout>
+
     <ListView
         android:id="@+id/lvSach"
         android:layout_width="match_parent"
-        android:layout_height="720dp"
-        android:divider="@android:color/transparent"
-        android:dividerHeight="0dp"
-        android:background="#F2F3F4"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/sapXep"
         android:layout_marginTop="10dp"
-        android:layout_marginRight="10dp"/>
+        android:layout_marginRight="10dp"
+        android:background="#F2F3F4"
+        android:divider="@android:color/transparent"
+        android:dividerHeight="0dp" />
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fltAdd"
+    <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:layout_marginEnd="15dp"
-        android:layout_marginBottom="20dp"
-        android:backgroundTint="#03C03C"
-        android:src="@drawable/add" />
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true">
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fltAdd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="22dp"
+            android:backgroundTint="#03C03C"
+            android:src="@drawable/add"
+            />
+    </RelativeLayout>
+</RelativeLayout>

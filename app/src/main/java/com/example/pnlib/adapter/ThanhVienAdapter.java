@@ -26,7 +26,7 @@ public class ThanhVienAdapter extends ArrayAdapter<ThanhVien> {
     frgThanhVien frgThanhVien;
     private ArrayList<ThanhVien> list;
 
-    TextView txtMaTV, txtTenTV, txtNamSinh;
+    TextView txtMaTV, txtTenTV, txtNamSinh, txtcccd;
     ImageButton imgBtnDelete;
 
     ThanhVien thanhVien;
@@ -55,6 +55,8 @@ public class ThanhVienAdapter extends ArrayAdapter<ThanhVien> {
             txtTenTV.setText("Tên thành viên: " + item.getHoTenTV());
             txtNamSinh = v.findViewById(R.id.txtNamSinh);
             txtNamSinh.setText("Năm sinh: " + item.getNamSinh());
+            txtcccd = v.findViewById(R.id.txtCCCD);
+            txtcccd.setText("CCCD: " + item.getCccd());
             imgBtnDelete = v.findViewById(R.id.imgBtnDelete);
         }
 
